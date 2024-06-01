@@ -17,8 +17,6 @@ describe("Create User", () => {
 
     const user = await createUserService.execute(userData);
 
-    console.log(user);
-
     expect(user.first_name).toBe("John");
     expect(user).toBeInstanceOf(User);
     expect(user).toHaveProperty("id");

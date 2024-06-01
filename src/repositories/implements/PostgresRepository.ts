@@ -35,8 +35,8 @@ export class PostgresRepository implements IUserRepository {
   }
 
   async findAllUsers(): Promise<User[]> {
-    const users = await this.prisma.users.findMany();
-    console.log(users);
-    return users;
+    const user = await this.prisma.users.findMany();
+    console.log(user);
+    return user;
   }
 }

@@ -19,6 +19,13 @@ model Users {
   last_name String
   email String @unique
   company Int
+  admin Boolean
   password String
   @@map("users")
+}
+
+model Company {
+  id Int @id
+  name_company String
+  @@map("company")
 }

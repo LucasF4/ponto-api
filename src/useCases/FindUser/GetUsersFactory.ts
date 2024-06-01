@@ -1,10 +1,12 @@
-import { DbUserRepository } from "../../repositories/implements/dbUserRepository";
+import { PrismaClient } from "@prisma/client";
+import { PostgresRepository } from "../../repositories/implements/PostgresRepository";
 import { GetUsersController } from "./GetUsersController";
 import { GetUsersUseCase } from "./GetUsersUseCase";
 
-export const createUserFactory = () => {
-  const dbUserRepository = new DbUserRepository();
-  const getUsersUseCase = new GetUsersUseCase(dbUserRepository);
+export const getUsersFactory = () => {
+  const prisma = new PrismaClient();
+  const postgresRepository = new PostgresRepository(prisma);
+  const getUsersUseCase = new GetUsersUseCase(postgresRepository);
   const getUsersController = new GetUsersController(getUsersUseCase);
 
   return getUsersController;
